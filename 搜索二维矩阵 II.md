@@ -66,3 +66,57 @@ class Solution {
 ## 学习与验证
 
 你从示例推出了排除方向、下标更新与循环条件，并完成实现。本轮完成静态审阅与手推，未运行 Java 或提交力扣。
+
+## 补充解法：逐行二分
+
+每一行独立有序，因此可以在该行二分。先用首尾元素判断目标是否落在这一行的值域内。落在值域内只是可能存在，仍需二分确认。某一行查不到时，还要继续检查其他行。
+
+~~~java
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for (int[] row : matrix) {
+            int left = 0;
+            int right = row.length - 1;
+            if (target < row[left] || target > row[right]) {
+                continue;
+            }
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                if (row[mid] == target) {
+                    return true;
+                }
+                if (row[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+}
+~~~
+
+二分维护闭区间 [left,right]。边界相等时还有一个候选，比较过的 mid 可以排除。题目保证每行非空。最坏时间 O(m log(n+1))，额外空间 O(1)。
+
+### 为什么首尾剪枝仍可能做很多次二分
+
+找 5 时，下面的矩阵每行每列均非递减：
+
+~~~text
+1 1 1 1 9
+1 1 1 9 9
+1 1 9 9 9
+1 9 9 9 9
+9 9 9 9 9
+~~~
+
+前四行的首尾是 1 和 9，首尾判断都无法跳过。每行二分直到候选区间为空，才能确认没有 5。最后一行全是 9，可以跳过。
+
+推广到边长 n，前 n-1 行都要二分。边长 300 时即 299 行，普通逐行二分在这组数据上耗时 Θ(n log n)。右上角搜索能同时利用列的有序性，沿着 1 和 9 的分界移动，最多比较 2n-1 次。这个反例针对逐行二分及其首尾剪枝写法。
+
+反例来源：[灵茶山艾府的力扣题解](https://leetcode.cn/problems/search-a-2d-matrix-ii/solutions/2783938/tu-jie-pai-chu-fa-yi-tu-miao-dong-python-kytg/)（根据对话中提供的构造整理）。
+
+复习自测：为什么首尾夹住目标仍不能直接返回 true？如果某行只剩一格，为什么二分条件用 left<=right？
+
+验证范围：静态检查及示例手推。
