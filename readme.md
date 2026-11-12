@@ -1,7 +1,7 @@
 <h1 align="center">LeetCode 学习笔记</h1>
 <p align="center">用 Java 练习 LeetCode Hot 100，记录从读题、推导到写出代码的过程。</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/笔记-27%20篇-blue?style=flat-square" alt="27 篇笔记">
+  <img src="https://img.shields.io/badge/笔记-28%20篇-blue?style=flat-square" alt="28 篇笔记">
   <img src="https://img.shields.io/badge/语言-Java-orange?style=flat-square" alt="语言 Java">
   <img src="https://img.shields.io/badge/题单-Hot%20100-brightgreen?style=flat-square" alt="题单 Hot 100">
 </p>
@@ -74,10 +74,11 @@
 </details>
 
 <details>
-<summary><strong>链表</strong> · 6 篇</summary>
+<summary><strong>链表</strong> · 7 篇</summary>
 
 | 题号 | 笔记 | 从哪个问题想到解法 |
 | --- | --- | --- |
+| 2 | [两数相加](两数相加.md) | 缺位补 0 后，如何把本轮进位传到下一位？ |
 | 21 | [合并两个有序链表](合并两个有序链表.md) | 为什么每轮比较两个当前节点，就能确定下一节点？ |
 | 141 | [环形链表](环形链表.md) | 环内速度差为什么保证相遇？为什么只查 fast 边界？ |
 | 142 | [环形链表 II](环形链表%20II.md) | 相遇后为什么从头与相遇点同步走能找到入口？ |
@@ -93,6 +94,7 @@
 | 题目 | 方法 |
 | --- | --- |
 | 两数之和 | 哈希表查询补数 |
+| 两数相加 | 链表逐位模拟竖式加法 |
 | 无重复字符的最长子串 | 不定长滑窗 + HashSet |
 | 盛最多水的容器 | 双指针，按可排除边界移动 |
 | 三数之和 | 排序 + 固定一个数 + 双指针 + 去重 |
@@ -142,7 +144,7 @@
 
 ## 本次整理范围
 
-27 篇题解均按“快速回忆 → 分步推导 → 示例 → Java → 易错点 → 复杂度 → 自测”重组，多方法题按方法分别展开。
+28 篇题解均按“快速回忆 → 分步推导 → 示例 → Java → 易错点 → 复杂度 → 自测”重组，多方法题按方法分别展开。
 438 的几种定长代码写法归在同一方法下，另列不定长方法及其证明。保留接雨水三种方法和各题既有代码、来源与历史验证说明。
 本次修改为本地笔记整理，GitHub 发布状态以实际提交和推送记录为准。
 
