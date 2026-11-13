@@ -1,7 +1,7 @@
 <h1 align="center">LeetCode 学习笔记</h1>
 <p align="center">用 Java 练习 LeetCode Hot 100，记录从读题、推导到写出代码的过程。</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/笔记-28%20篇-blue?style=flat-square" alt="28 篇笔记">
+  <img src="https://img.shields.io/badge/笔记-29%20篇-blue?style=flat-square" alt="29 篇笔记">
   <img src="https://img.shields.io/badge/语言-Java-orange?style=flat-square" alt="语言 Java">
   <img src="https://img.shields.io/badge/题单-Hot%20100-brightgreen?style=flat-square" alt="题单 Hot 100">
 </p>
@@ -74,11 +74,12 @@
 </details>
 
 <details>
-<summary><strong>链表</strong> · 7 篇</summary>
+<summary><strong>链表</strong> · 8 篇</summary>
 
 | 题号 | 笔记 | 从哪个问题想到解法 |
 | --- | --- | --- |
 | 2 | [两数相加](两数相加.md) | 缺位补 0 后，如何把本轮进位传到下一位？ |
+| 19 | [删除链表的倒数第 N 个结点](删除链表的倒数第%20N%20个结点.md) | 快指针到尾节点时，慢指针怎样停在待删节点的前驱？ |
 | 21 | [合并两个有序链表](合并两个有序链表.md) | 为什么每轮比较两个当前节点，就能确定下一节点？ |
 | 141 | [环形链表](环形链表.md) | 环内速度差为什么保证相遇？为什么只查 fast 边界？ |
 | 142 | [环形链表 II](环形链表%20II.md) | 相遇后为什么从头与相遇点同步走能找到入口？ |
@@ -98,6 +99,7 @@
 | 无重复字符的最长子串 | 不定长滑窗 + HashSet |
 | 盛最多水的容器 | 双指针，按可排除边界移动 |
 | 三数之和 | 排序 + 固定一个数 + 双指针 + 去重 |
+| 删除链表的倒数第 N 个结点 | 哑节点 + 快慢指针保持 n 步距离 |
 | 合并两个有序链表 | 哑节点 + 双指针迭代合并；递归合并 |
 | 缺失的第一个正数 | 原地交换归位；集合存在性思路对照 |
 | 接雨水 | 方法一：前后缀最高值数组；方法二：双指针；方法三：单调栈 |
@@ -144,7 +146,7 @@
 
 ## 本次整理范围
 
-28 篇题解均按“快速回忆 → 分步推导 → 示例 → Java → 易错点 → 复杂度 → 自测”重组，多方法题按方法分别展开。
+29 篇题解均按“快速回忆 → 分步推导 → 示例 → Java → 易错点 → 复杂度 → 自测”重组，多方法题按方法分别展开。
 438 的几种定长代码写法归在同一方法下，另列不定长方法及其证明。保留接雨水三种方法和各题既有代码、来源与历史验证说明。
 本次修改为本地笔记整理，GitHub 发布状态以实际提交和推送记录为准。
 
