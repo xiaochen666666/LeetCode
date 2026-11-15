@@ -104,3 +104,48 @@ class Solution {
 ~~~
 
 注意 first 在组内始终指向原组头。moved.next 接的是当前组头 groupPrev.next，每轮头插后组头都会变。找组尾只用于确认组长，头插次数固定为 k-1，因此无需另外保存组外节点。时间 O(n)，额外空间 O(1)。已静态检查并手推 k=1、完整末组和不足 k 的末组。
+
+## 补充写法：先统计长度，再按次数反转
+
+参考灵茶山艾府的写法一。先遍历一遍得到节点总数。此后只要剩余节点数至少为 k，就用第 206 题的三指针写法翻转恰好 k 个节点。每完成一组，剩余节点数减 k。 [灵茶山艾府题解](https://leetcode.cn/problems/reverse-nodes-in-k-group/solutions/1992228/you-xie-cuo-liao-yi-ge-shi-pin-jiang-tou-plfs/)
+
+~~~java
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        int remaining = 0;
+        for (ListNode node = head; node != null; node = node.next) {
+            remaining++;
+        }
+
+        ListNode dummy = new ListNode(0, head);
+        ListNode groupPrev = dummy;
+        while (remaining >= k) {
+            ListNode groupTail = groupPrev.next; // 原组头会变成组尾
+            ListNode current = groupTail;
+            ListNode prev = null;
+
+            for (int i = 0; i < k; i++) {
+                ListNode next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+
+            // prev 是新组头，current 是组外第一个节点。
+            groupTail.next = current;
+            groupPrev.next = prev;
+            groupPrev = groupTail;
+            remaining -= k;
+        }
+        return dummy.next;
+    }
+}
+~~~
+
+手推 1→2→3→4→5、k=3。翻三次后，prev 指向 3→2→1，current 指向 4。因为 prev 起初是 null，节点 1 的 next 暂时是 null，所以退出内层循环后要显式写 groupTail.next = current。再让 dummy 接到 3。剩余两个节点，直接返回 3→2→1→4→5。
+
+题解写法二按组试走 k 步确认组长，与本笔记开头的检查方式相同。翻转也可固定执行 k 次，由翻转结束后的 current 提供组外节点。原笔记通过 groupNext 判断何时停，并在第一轮顺手接好组尾。两种方式时间均为 O(n)，额外空间均为 O(1)。
+
+自测：如果翻转前 prev = null，且省略 groupTail.next = current，例子中的哪些节点会从结果里消失？
+
+本节 Java 代码根据原文思路整理，已静态检查及手推。
