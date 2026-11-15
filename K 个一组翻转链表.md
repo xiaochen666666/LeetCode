@@ -69,3 +69,38 @@ class Solution {
 3. 手推 k=1、k=n，以及末组不足 k 的情况。
 
 已静态检查和手推，未在力扣提交。
+
+## 补充写法：组内头插
+
+确认够 k 个节点后，固定 first 指向原组头。每轮把 first 后面的节点摘下，插到 groupPrev 后面。以 1→2→3→4、k=3 为例，先把 2 移到组头得到 2→1→3→4，再把 3 移到组头得到 3→2→1→4。first 始终指向 1，完成 k-1 次头插后成为下一组的前驱。
+
+~~~java
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode dummy = new ListNode(0, head);
+        ListNode groupPrev = dummy;
+
+        while (true) {
+            ListNode end = groupPrev;
+            for (int i = 0; i < k; i++) {
+                end = end.next;
+                if (end == null) {
+                    return dummy.next;
+                }
+            }
+
+            ListNode first = groupPrev.next;
+            for (int i = 1; i < k; i++) {
+                // 摘下 first 后面的节点，再插到组头。
+                ListNode moved = first.next;
+                first.next = moved.next;
+                moved.next = groupPrev.next;
+                groupPrev.next = moved;
+            }
+            groupPrev = first;
+        }
+    }
+}
+~~~
+
+注意 first 在组内始终指向原组头。moved.next 接的是当前组头 groupPrev.next，每轮头插后组头都会变。找组尾只用于确认组长，头插次数固定为 k-1，因此无需另外保存组外节点。时间 O(n)，额外空间 O(1)。已静态检查并手推 k=1、完整末组和不足 k 的末组。
