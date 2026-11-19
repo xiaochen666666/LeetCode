@@ -118,3 +118,102 @@ class LRUCache {
 3. 当只有一个真实节点时，unlink 会把哪两个节点重新连起来？
 
 本地 Java 验证通过 8 项断言，覆盖未命中、读写刷新顺序、容量为 1 和淘汰。
+
+## 补充写法 单哑节点循环双向链表
+
+让同一个哑节点 dummy 同时连接链表两端。dummy.next 指向最近使用的节点，dummy.prev 指向最久未使用的节点。空缓存时两个引用都指向 dummy 自己。这个结构来自灵茶山艾府的图解。 [用户提供的题解](https://leetcode.cn/problems/lru-cache/solutions/2456294/tu-jie-yi-zhang-tu-miao-dong-lrupythonja-czgt/) · [同作者的 LCR 031 题解](https://leetcode.cn/problems/OrIXps/solutions/1/tu-jie-yi-zhang-tu-miao-dong-lrupythonja-5udb/)
+
+| 要找的位置 | 双哑节点 | 单哑节点 |
+| --- | --- | --- |
+| 最近使用 | head.next | dummy.next |
+| 最久未使用 | tail.prev | dummy.prev |
+| 空缓存 | head.next 指向 tail，tail.prev 指向 head | dummy.next 和 dummy.prev 都指向 dummy |
+
+### 从原代码推导
+
+1. 空缓存插入第一个节点时，旧头就是 dummy。更新旧头的 prev 会让 dummy.prev 指向新节点，最后再更新 dummy.next。此时新节点既是头也是尾。
+2. 摘除仍只需把节点两侧接起来。摘除唯一真实节点时，它的 prev 和 next 都指向 dummy，两条赋值会让 dummy 恢复自环。
+3. get 和 put 命中时都要查询并提到头部，可以共用 access。put 命中后修改返回节点的 value。未命中时新建节点，再按容量决定是否淘汰 dummy.prev。
+
+以容量 2 为例，插入 1、2 后，从 dummy.next 正向读到 2→1。读取 1 后变成 1→2，此时 dummy.prev 是 2。插入 3 后淘汰 2，留下 3→1。
+
+~~~java
+import java.util.HashMap;
+import java.util.Map;
+
+class LRUCache {
+    private static class Node {
+        final int key;
+        int value;
+        Node prev;
+        Node next;
+
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private final int capacity;
+    private final Map<Integer, Node> map = new HashMap<>();
+    private final Node dummy = new Node(0, 0);
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        dummy.next = dummy;
+        dummy.prev = dummy;
+    }
+
+    public int get(int key) {
+        Node node = access(key);
+        return node == null ? -1 : node.value;
+    }
+
+    public void put(int key, int value) {
+        Node node = access(key);
+        if (node != null) {
+            node.value = value;
+            return;
+        }
+
+        node = new Node(key, value);
+        map.put(key, node);
+        addFirst(node);
+
+        if (map.size() > capacity) {
+            Node lru = dummy.prev;
+            unlink(lru);
+            map.remove(lru.key);
+        }
+    }
+
+    // 查询并刷新访问顺序。
+    private Node access(int key) {
+        Node node = map.get(key);
+        if (node != null) {
+            unlink(node);
+            addFirst(node);
+        }
+        return node;
+    }
+
+    private void unlink(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    private void addFirst(Node node) {
+        node.prev = dummy;
+        node.next = dummy.next;
+        dummy.next.prev = node;
+        dummy.next = node;
+    }
+}
+~~~
+
+- 用哑节点自己的引用判断链表边界。真实数据的 key 也可以是 0，哑节点始终不入哈希表。
+- addFirst 先读取旧的 dummy.next，再替换 dummy.next。这样旧头的 prev 才能正确更新。
+- 平均时间仍为 O(1)，空间仍为 O(capacity)。单哑节点省掉一个固定节点，复杂度不变。
+- 自测。容量为 1，插入新键导致旧键淘汰后，dummy.next 和 dummy.prev 各指向谁？
+
+Java 实现依据同作者题解中可核实的循环哑节点结构整理。本地通过 8 项断言，覆盖空缓存、读取和更新刷新顺序、容量 1、键 0 与淘汰。
