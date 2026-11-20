@@ -1,7 +1,7 @@
 <h1 align="center">LeetCode 学习笔记</h1>
 <p align="center">用 Java 练习 LeetCode Hot 100，记录从读题、推导到写出代码的过程。</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/笔记-38%20篇-blue?style=flat-square" alt="38 篇笔记">
+  <img src="https://img.shields.io/badge/笔记-39%20篇-blue?style=flat-square" alt="39 篇笔记">
   <img src="https://img.shields.io/badge/语言-Java-orange?style=flat-square" alt="语言 Java">
   <img src="https://img.shields.io/badge/题单-Hot%20100-brightgreen?style=flat-square" alt="题单 Hot 100">
 </p>
@@ -98,11 +98,12 @@
 </details>
 
 <details>
-<summary><strong>二叉树</strong> · 3 篇</summary>
+<summary><strong>二叉树</strong> · 4 篇</summary>
 
 | 题号 | 笔记 | 从哪个问题想到解法 |
 | --- | --- | --- |
 | 94 | [二叉树的中序遍历](二叉树的中序遍历.md) | 什么时候把当前节点的值加入结果？ |
+| 101 | [对称二叉树](对称二叉树.md) | 镜子两边的孩子应该怎么配对？ |
 | 104 | [二叉树的最大深度](二叉树的最大深度.md) | 左右子树的深度已知，怎样加上当前节点？ |
 | 226 | [翻转二叉树](翻转二叉树.md) | 在递归前交换左右孩子，还是等递归完成后交换？ |
 
@@ -130,6 +131,7 @@
 | 矩阵置零 | 行列布尔数组；第一行第一列原地标记；单布尔倒序写法 |
 | 最小覆盖子串 | 不定长滑窗：频次扫描；diff + 达标种类数优化 |
 | 二叉树的中序遍历 | 递归 DFS、显式栈迭代，按左子树 → 当前节点 → 右子树访问 |
+| 对称二叉树 | 成对递归，交叉比较外侧和内侧孩子 |
 | 二叉树的最大深度 | 自底向上返回子树高度；自顶向下传递根到节点的深度 |
 | 翻转二叉树 | 先序递归先交换；后序递归处理完子树再交换 |
 | 最长连续序列 | HashSet 起点扩展；提前返回；端点差计算长度 |
