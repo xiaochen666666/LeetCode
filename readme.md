@@ -1,7 +1,7 @@
 <h1 align="center">LeetCode 学习笔记</h1>
 <p align="center">用 Java 练习 LeetCode Hot 100，记录从读题、推导到写出代码的过程。</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/笔记-36%20篇-blue?style=flat-square" alt="36 篇笔记">
+  <img src="https://img.shields.io/badge/笔记-37%20篇-blue?style=flat-square" alt="37 篇笔记">
   <img src="https://img.shields.io/badge/语言-Java-orange?style=flat-square" alt="语言 Java">
   <img src="https://img.shields.io/badge/题单-Hot%20100-brightgreen?style=flat-square" alt="题单 Hot 100">
 </p>
@@ -98,11 +98,12 @@
 </details>
 
 <details>
-<summary><strong>二叉树</strong> · 1 篇</summary>
+<summary><strong>二叉树</strong> · 2 篇</summary>
 
 | 题号 | 笔记 | 从哪个问题想到解法 |
 | --- | --- | --- |
 | 94 | [二叉树的中序遍历](二叉树的中序遍历.md) | 什么时候把当前节点的值加入结果？ |
+| 104 | [二叉树的最大深度](二叉树的最大深度.md) | 左右子树的深度已知，怎样加上当前节点？ |
 
 </details>
 
@@ -128,6 +129,7 @@
 | 矩阵置零 | 行列布尔数组；第一行第一列原地标记；单布尔倒序写法 |
 | 最小覆盖子串 | 不定长滑窗：频次扫描；diff + 达标种类数优化 |
 | 二叉树的中序遍历 | 递归 DFS、显式栈迭代，按左子树 → 当前节点 → 右子树访问 |
+| 二叉树的最大深度 | 递归返回子树深度，取左右最大值再加一 |
 | 最长连续序列 | HashSet 起点扩展；提前返回；端点差计算长度 |
 | 合并 K 个升序链表 | 步长翻倍归并、最小堆、递归分治 |
 | 两两交换链表中的节点 | 哑节点 + 每对重连三条 next |
