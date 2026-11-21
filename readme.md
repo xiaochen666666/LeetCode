@@ -1,7 +1,7 @@
 <h1 align="center">LeetCode 学习笔记</h1>
 <p align="center">用 Java 练习 LeetCode Hot 100，记录从读题、推导到写出代码的过程。</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/笔记-39%20篇-blue?style=flat-square" alt="39 篇笔记">
+  <img src="https://img.shields.io/badge/笔记-40%20篇-blue?style=flat-square" alt="40 篇笔记">
   <img src="https://img.shields.io/badge/语言-Java-orange?style=flat-square" alt="语言 Java">
   <img src="https://img.shields.io/badge/题单-Hot%20100-brightgreen?style=flat-square" alt="题单 Hot 100">
 </p>
@@ -98,7 +98,7 @@
 </details>
 
 <details>
-<summary><strong>二叉树</strong> · 4 篇</summary>
+<summary><strong>二叉树</strong> · 5 篇</summary>
 
 | 题号 | 笔记 | 从哪个问题想到解法 |
 | --- | --- | --- |
@@ -106,6 +106,7 @@
 | 101 | [对称二叉树](对称二叉树.md) | 镜子两边的孩子应该怎么配对？ |
 | 104 | [二叉树的最大深度](二叉树的最大深度.md) | 左右子树的深度已知，怎样加上当前节点？ |
 | 226 | [翻转二叉树](翻转二叉树.md) | 在递归前交换左右孩子，还是等递归完成后交换？ |
+| 543 | [二叉树的直径](二叉树的直径.md) | 左右高度什么时候相加，什么时候只取较大的一侧？ |
 
 </details>
 
@@ -134,6 +135,7 @@
 | 对称二叉树 | 成对递归、队列迭代，交叉比较外侧和内侧孩子 |
 | 二叉树的最大深度 | 自底向上返回子树高度；自顶向下传递根到节点的深度 |
 | 翻转二叉树 | 先序递归先交换；后序递归处理完子树再交换 |
+| 二叉树的直径 | 后序返回单侧高度，用左右高度之和更新直径 |
 | 最长连续序列 | HashSet 起点扩展；提前返回；端点差计算长度 |
 | 合并 K 个升序链表 | 步长翻倍归并、最小堆、递归分治 |
 | 两两交换链表中的节点 | 哑节点 + 每对重连三条 next |
