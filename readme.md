@@ -1,7 +1,7 @@
 <h1 align="center">LeetCode 学习笔记</h1>
 <p align="center">用 Java 练习 LeetCode Hot 100，记录从读题、推导到写出代码的过程。</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/笔记-40%20篇-blue?style=flat-square" alt="40 篇笔记">
+  <img src="https://img.shields.io/badge/笔记-41%20篇-blue?style=flat-square" alt="41 篇笔记">
   <img src="https://img.shields.io/badge/语言-Java-orange?style=flat-square" alt="语言 Java">
   <img src="https://img.shields.io/badge/题单-Hot%20100-brightgreen?style=flat-square" alt="题单 Hot 100">
 </p>
@@ -98,12 +98,13 @@
 </details>
 
 <details>
-<summary><strong>二叉树</strong> · 5 篇</summary>
+<summary><strong>二叉树</strong> · 6 篇</summary>
 
 | 题号 | 笔记 | 从哪个问题想到解法 |
 | --- | --- | --- |
 | 94 | [二叉树的中序遍历](二叉树的中序遍历.md) | 什么时候把当前节点的值加入结果？ |
 | 101 | [对称二叉树](对称二叉树.md) | 镜子两边的孩子应该怎么配对？ |
+| 102 | [二叉树的层序遍历](二叉树的层序遍历.md) | 怎样在队列中区分当前层和下一层？ |
 | 104 | [二叉树的最大深度](二叉树的最大深度.md) | 左右子树的深度已知，怎样加上当前节点？ |
 | 226 | [翻转二叉树](翻转二叉树.md) | 在递归前交换左右孩子，还是等递归完成后交换？ |
 | 543 | [二叉树的直径](二叉树的直径.md) | 左右高度什么时候相加，什么时候只取较大的一侧？ |
@@ -133,6 +134,7 @@
 | 最小覆盖子串 | 不定长滑窗：频次扫描；diff + 达标种类数优化 |
 | 二叉树的中序遍历 | 递归 DFS、显式栈迭代，按左子树 → 当前节点 → 右子树访问 |
 | 对称二叉树 | 成对递归、队列迭代，交叉比较外侧和内侧孩子 |
+| 二叉树的层序遍历 | 队列 BFS，每层开始时固定出队次数 |
 | 二叉树的最大深度 | 自底向上返回子树高度；自顶向下传递根到节点的深度 |
 | 翻转二叉树 | 先序递归先交换；后序递归处理完子树再交换 |
 | 二叉树的直径 | 后序返回单侧高度，用左右高度之和更新直径 |
