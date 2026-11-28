@@ -1,7 +1,7 @@
 <h1 align="center">LeetCode 学习笔记</h1>
 <p align="center">用 Java 练习 LeetCode Hot 100，记录从读题、推导到写出代码的过程。</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/笔记-46%20篇-blue?style=flat-square" alt="46 篇笔记">
+  <img src="https://img.shields.io/badge/笔记-47%20篇-blue?style=flat-square" alt="47 篇笔记">
   <img src="https://img.shields.io/badge/语言-Java-orange?style=flat-square" alt="语言 Java">
   <img src="https://img.shields.io/badge/题单-Hot%20100-brightgreen?style=flat-square" alt="题单 Hot 100">
 </p>
@@ -98,7 +98,7 @@
 </details>
 
 <details>
-<summary><strong>二叉树</strong> · 11 篇</summary>
+<summary><strong>二叉树</strong> · 12 篇</summary>
 
 | 题号 | 笔记 | 从哪个问题想到解法 |
 | --- | --- | --- |
@@ -107,6 +107,7 @@
 | 101 | [对称二叉树](对称二叉树.md) | 镜子两边的孩子应该怎么配对？ |
 | 102 | [二叉树的层序遍历](二叉树的层序遍历.md) | 怎样在队列中区分当前层和下一层？ |
 | 104 | [二叉树的最大深度](二叉树的最大深度.md) | 左右子树的深度已知，怎样加上当前节点？ |
+| 105 | [从前序与中序遍历序列构造二叉树](从前序与中序遍历序列构造二叉树.md) | 怎样用中序算出的左子树节点数切分前序？ |
 | 108 | [将有序数组转换为二叉搜索树](将有序数组转换为二叉搜索树.md) | 怎样选根，让左右子树都能分到接近一半的元素？ |
 | 114 | [二叉树展开为链表](二叉树展开为链表.md) | 怎样用递归返回的尾节点接回原右子树？ |
 | 199 | [二叉树的右视图](二叉树的右视图.md) | 从左到右出队时，哪一次出队对应本层最右节点？ |
@@ -143,6 +144,7 @@
 | 二叉树的层序遍历 | 单队列 BFS、双列表 BFS、DFS 按深度归组 |
 | 二叉树的右视图 | 单队列与双列表 BFS 取每层末尾，先右后左 DFS 取每层首次访问 |
 | 二叉树的最大深度 | 自底向上返回子树高度；自顶向下传递根到节点的深度 |
+| 从前序与中序遍历序列构造二叉树 | 复制数组递归、哈希表加区间递归 |
 | 将有序数组转换为二叉搜索树 | 取中点递归建树，对照闭区间与左闭右开区间 |
 | 二叉树展开为链表 | 后序递归返回链尾拼接，或按右 → 左 → 根逐个头插 |
 | 翻转二叉树 | 先序递归先交换；后序递归处理完子树再交换 |
